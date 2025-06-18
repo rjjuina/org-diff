@@ -1,0 +1,38 @@
+#+TITLE: org-diff Test Example
+
+* Testing org-diff functionality
+
+Here's an example diff block to test with:
+
+#+begin_diff
+Hello world
+Hello world
+Hi world
+Hello world!
+Good morning world
+#+end_diff
+
+** Instructions for testing:
+
+1. Load the org-diff.el file in Emacs: ~M-x load-file~ and select org-diff.el
+2. Open this test-example.org file
+3. Place cursor anywhere within the diff block above
+4. Run ~M-x org-diff-check~ to analyze differences
+5. You should see:
+   - Line 1: "Hello world" (normal - reference line)
+   - Line 2: "Hello world" (dimmed - identical to line 1)
+   - Line 3: "Hi world" ("Hi" should be highlighted/bold)
+   - Line 4: "Hello world!" ("!" should be highlighted/bold)
+   - Line 5: "Good morning world" ("Good morning" should be highlighted/bold)
+6. Run ~M-x org-diff-clear~ to remove all highlighting
+
+** Template expansion test:
+
+Type ~<diff~ followed by TAB to expand into a new diff block.
+
+#+begin_diff
+hello world
+hello world
+#+end_diff
+
+
