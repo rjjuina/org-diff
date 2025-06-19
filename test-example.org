@@ -32,7 +32,7 @@ Type ~<diff~ followed by TAB to expand into a new diff block.
 
 #+begin_diff
 hello world
-hello world
+Hello world
 #+end_diff
 
 

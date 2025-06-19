@@ -142,6 +142,13 @@ LINES is a list of (line-text . line-position) pairs."
             (message "Diff analysis complete - %d lines compared" (length lines))))
       (message "Not in a diff block"))))
 
+;; C-c C-c support for diff blocks
+(defun org-diff--ctrl-c-ctrl-c-handler ()
+  "Handle C-c C-c in diff blocks."
+  (when (org-diff--find-diff-block)
+    (org-diff-check)
+    t)) ; Return t to indicate we handled it
+
 ;; Template expansion setup
 (defun org-diff--setup-templates ()
   "Setup org-tempo templates for diff blocks."
@@ -149,7 +156,8 @@ LINES is a list of (line-text . line-position) pairs."
 
 ;; Initialize when org-mode is loaded
 (with-eval-after-load 'org
-  (org-diff--setup-templates))
+  (org-diff--setup-templates)
+  (add-hook 'org-ctrl-c-ctrl-c-hook 'org-diff--ctrl-c-ctrl-c-handler))
 
 (provide 'org-diff)
 
